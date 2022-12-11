@@ -59,11 +59,23 @@ def get_ship_coordinates(board,c,r):
     Request user to give two numbers
     that will be the ship coordinates  
     """
-    print("Please select the position of your ship whithin the board by choosing the column and row where this is located.")
-    c = int(input())
-    r = int(input())
+    print(f"Please select the position of your ship whithin the board by choosing the column and row where this is located.\nNumbers need to be integers and within 1-{board_size} interval.")
+    while True:
+        try:
+            r = int(input())
+            c = int(input())
+            
+
+        except ValueError:
+            print("Not a number! Please try again!")
+        else:
+            if 1 <= c < board_size and 1<= r <board_size:
+                break
+            else:
+                print("Invalid number! Please try again.")
+
     new_board = board
-    new_board[c-1][r-1] = "@"
+    new_board[r-1][c-1] = "@"
     return new_board
 
 
