@@ -1,6 +1,7 @@
 from random import randint
 
 board = []
+elements = []
 """
 Welcome message 
 """
@@ -39,9 +40,16 @@ def display_board(board, board_size):
     in rows of the board_size length
     """
     for x in range(board_size):
-        for y in range(0,board_size,board_size):
-            print(board[x][y]*board_size)
+        for y in range(board_size):
+            elements.append(board[x][y])
+    
+    print(elements)
+
+    for i in range(0,len(elements),board_size):
+        print(*elements[i:i+board_size])
    
+
+
 
 create_board(board_size)
 display_board(board,board_size)
