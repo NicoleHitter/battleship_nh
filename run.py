@@ -1,3 +1,4 @@
+import random
 from random import randint
 
 board = []
@@ -57,14 +58,16 @@ def display_board(b, board_size):
 def get_ship_coordinates(board,c,r):
     """
     Request user to give two numbers
-    that will be the ship coordinates  
+    that will be the player's guessed coordinates  
+    for the ship
+    which before beeing passed to new_board 
+    will need to be validated 
     """
     print(f"Please select the position of your ship whithin the board by choosing the column and row where this is located.\nNumbers need to be integers and within 1-{board_size} interval.")
     while True:
         try:
             r = int(input())
             c = int(input())
-            
 
         except ValueError:
             print("Not a number! Please try again!")
@@ -78,12 +81,22 @@ def get_ship_coordinates(board,c,r):
     new_board[r-1][c-1] = "@"
     return new_board
 
+def random_ship():
+    """
+    This function will generate two random numbers 
+    that will be the real ship coordinates
+    """
+    r_rand = random.randint(1,board_size)
+    c_rand = random.randint(1,board_size)
+    
+    print(r_rand,c_rand) 
+
 
 create_board(board_size)
 display_board(board,board_size)
 new_board = get_ship_coordinates(board,c,r)
 display_board(new_board,board_size)
-
+random_ship()
 
 
 
