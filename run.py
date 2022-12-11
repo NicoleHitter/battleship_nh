@@ -4,8 +4,13 @@ from random import randint
 board = []
 b=[]
 new_board = []
-c=0
-r=0
+c = 0
+r = 0
+r_rand = 0
+c_rand = 0
+s_coordinates = []
+m_coordinates = []
+
 """
 Welcome message 
 """
@@ -55,7 +60,7 @@ def display_board(b, board_size):
         print(*elements[i:i+board_size])
         
    
-def get_ship_coordinates(board,c,r):
+def get_missile_coordinates(board,r,c):
     """
     Request user to give two numbers
     that will be the player's guessed coordinates  
@@ -63,7 +68,7 @@ def get_ship_coordinates(board,c,r):
     which before beeing passed to new_board 
     will need to be validated 
     """
-    print(f"Please select the position of your ship whithin the board by choosing the column and row where this is located.\nNumbers need to be integers and within 1-{board_size} interval.")
+    print(f"Please select the position of your missile whithin the board by choosing the column and row where this will land.\nNumbers need to be integers and within 1-{board_size} interval.")
     while True:
         try:
             r = int(input())
@@ -72,31 +77,57 @@ def get_ship_coordinates(board,c,r):
         except ValueError:
             print("Not a number! Please try again!")
         else:
-            if 1 <= c < board_size and 1<= r <board_size:
+            if 1 <= c < board_size and 1<= r < board_size:
                 break
             else:
                 print("Invalid number! Please try again.")
+    global m_coordinates 
+    m_coordinates.append(r)
+    m_coordinates.append(c)
 
     new_board = board
     new_board[r-1][c-1] = "@"
-    return new_board
+    return new_board 
 
 def random_ship():
     """
     This function will generate two random numbers 
     that will be the real ship coordinates
     """
+    global r_rand
+    global c_rand 
+    global s_coordinates 
+
     r_rand = random.randint(1,board_size)
     c_rand = random.randint(1,board_size)
     
-    print(r_rand,c_rand) 
+    s_coordinates.append(r_rand)
+    s_coordinates.append(c_rand)
+    return s_coordinates
+    
 
+def check_sinking(m_coordinates, s_coordinates):
+    """
+    This function checks if ship has been hit 
+    by checking if the coordinates of the ship
+    are the same coordinates with the missile
+    """
+    if m_coordinates == s_coordinates:
+        print(f"Ship has been sinked!You won this battle!You have thrown missile at:{s_coordinates} exactly were ship was located")
+    else:
+        print(f"You missed the ship!Missile was thrown at:{m_coordinates} and ship was at:{s_coordinates}")
+
+        
 
 create_board(board_size)
 display_board(board,board_size)
-new_board = get_ship_coordinates(board,c,r)
+new_board = get_missile_coordinates(board,c,r)
 display_board(new_board,board_size)
-random_ship()
+s_coordinates = random_ship()
+print(r_rand)
+print(c_rand)
+check_sinking(m_coordinates, s_coordinates)
+
 
 
 
