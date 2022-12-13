@@ -12,7 +12,17 @@ In the end user will be shown if they have missed or hit the ship.
 
 ## Features
 ### Existing Features
+  * Accepting user's input
+  * Input Validation and Error Checking 
+    * User cannot enter coordinates outside the size of the board 
+    * Coordinates need to be numbers 
+  * Board generation depending on the size that user chooses 
   * 
+  * 
+
+
+
+
 
 
 
