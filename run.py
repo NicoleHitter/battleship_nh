@@ -1,38 +1,6 @@
 import random
 from random import randint
 
-board = []
-b=[]
-new_board = []
-c = 0
-r = 0
-r_rand = 0
-c_rand = 0
-s_coordinates = []
-m_coordinates = []
-
-"""
-Welcome message 
-"""
-print("Welcome to Battleship!")
-
-"""
-Request user to select a number 
-that will give the number of rows and columns 
-for the board 
-"""
-while True:
-    try:
-        board_size = int(input("Please enter the number of rows and columns (4-9).\n"))
-    except ValueError:
-        print("Not a number! Please try again!")
-    else:
-        if 4 <= board_size < 10:
-            break
-        else:
-            print("Invalid number! Please try again.")
-
-
 def create_board(board_size):
     """
     Creates the board using the board_size number 
@@ -118,18 +86,52 @@ def check_sinking(m_coordinates, s_coordinates):
         print(f"You missed the ship!Missile was thrown at:{m_coordinates} and ship was at:{s_coordinates}")
 
         
+def play_game():
+    """
+    Main function that gives the structure 
+    and the order in which other functions 
+    are called.
+    """
+    create_board(board_size)
+    display_board(board,board_size)
+    new_board = get_missile_coordinates(board,c,r)
+    display_board(new_board,board_size)
+    s_coordinates = random_ship()
+    check_sinking(m_coordinates, s_coordinates)
 
-create_board(board_size)
-display_board(board,board_size)
-new_board = get_missile_coordinates(board,c,r)
-display_board(new_board,board_size)
-s_coordinates = random_ship()
-print(r_rand)
-print(c_rand)
-check_sinking(m_coordinates, s_coordinates)
 
 
+board = []
+b=[]
+new_board = []
+c = 0
+r = 0
+r_rand = 0
+c_rand = 0
+s_coordinates = []
+m_coordinates = []
+    
+"""
+Welcome message 
+"""
+print("Welcome to Battleship!")
 
+"""
+Request user to select a number 
+that will give the number of rows and columns 
+for the board 
+"""
+while True:
+    try:
+        board_size = int(input("Please enter the number of rows and columns (4-9).\n"))
+    except ValueError:
+        print("Not a number! Please try again!")
+    else:
+        if 4 <= board_size < 10:
+            break
+        else:
+            print("Invalid number! Please try again.")
+play_game()
 
 
 
