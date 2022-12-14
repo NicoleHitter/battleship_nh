@@ -1,12 +1,22 @@
 import random
 from random import randint
 
-def get_board_size():
-    """
-    Welcome message 
-    """
-    print("Welcome to Battleship!")
 
+def display_instructions():
+    """
+    This functions is going to display 
+    welcome messafe and instructions 
+    for the player
+    """
+    print("Welcome to Battleship-NH!\n")
+    print("First you will be asked to introduce a number,")
+    print("that will be the size of the board,")
+    print("and then the row and column where you will throw the missile.")
+    print("Once this is done, you will be displayed message")
+    print("to confirm or not if you managed to hit the ship.")
+
+
+def get_board_size():
     """
     Request user to select a number 
     that will give the number of rows and columns 
@@ -24,6 +34,7 @@ def get_board_size():
                 print("Invalid number! Please try again.\n")
     return board_size
 
+
 def display_board(board_size, missile_coordinates=None, ship_coordinates=None):
     """
     Iterating through list elements and displaying them 
@@ -34,9 +45,9 @@ def display_board(board_size, missile_coordinates=None, ship_coordinates=None):
         for column in range(board_size):
             board_coordinates = (row, column)
             if board_coordinates == missile_coordinates:
-                print("M ")
+                print("M ", end=' ')
             elif board_coordinates == ship_coordinates:
-                print("S ")
+                print("S ", end=' ')
             else:
                 print(". ", end=' ')
         print("\n")
@@ -70,12 +81,13 @@ def get_missile_coordinates():
         except ValueError:
             print("Not a number! Please try again!")
         else:
-            if 1 <= missile_column < board_size and 1<= missile_column < board_size:
+            if (1 <= missile_column < board_size and 1 <= missile_column < board_size):
                 break
             else:
                 print("Invalid number! Please try again.")            
   
-    return(missile_row,missile_column)
+    return (missile_row, missile_column)
+
 
 def get_random_ship():
     """
@@ -85,7 +97,7 @@ def get_random_ship():
     ship_row = random.randint(1,board_size)
     ship_column = random.randint(1,board_size)
     
-    return (ship_row,ship_column)
+    return (ship_row, ship_column)
     
 
 def check_sinking(missile_coordinates, ship_coordinates):
@@ -99,31 +111,23 @@ def check_sinking(missile_coordinates, ship_coordinates):
     else:
         print(f"You missed the ship!Missile was thrown at:{missile_coordinates} and ship was at:{ship_coordinates}")
 
-        
+
 def play_game():
     """
     Main function that gives the structure 
     and the order in which other functions 
     are called.
     """
+    display_instructions()
     board_size = get_board_size()
     board = display_board(board_size)
-    new_board = get_missile_coordinates(board,c,r)
-    display_board(new_board,board_size)
-    s_coordinates = random_ship()
-    check_sinking(m_coordinates, s_coordinates)
+    missile_coordinates = get_missile_coordinates()
+    print(missile_coordinates)
+    ship_coordinates = get_random_ship()
+    print(ship_coordinates)
+    check_sinking(missile_coordinates, ship_coordinates)
+    board = display_board(board_size, missile_coordinates, ship_coordinates)
 
 
 
-
-board_size = get_board_size()
-board = display_board(board_size)
-missile_coordinates = get_missile_coordinates()
-print(missile_coordinates)
-ship_coordinates = get_random_ship()
-print(ship_coordinates)
-check_sinking(missile_coordinates, ship_coordinates)
-
-
-
-
+play_game()
