@@ -16,31 +16,18 @@ In the end user will be shown if they have missed or hit the ship.
   * Input Validation and Error Checking 
     * User cannot enter coordinates outside the size of the board 
     * Coordinates need to be numbers 
-  * Board generation depending on the size that user chooses 
-  * 
-  * 
-
-
-
-
-
-
-
-
-
+  * Board generation depending on user's input 
+  * Play against the computer 
 
 ### Features Left to Implement
-
-
+  * To allow player to throw more than one missile and computer to have more than one ship
+  * To retain player's name and scores and be able to save this data on an external spreadsheet
 
 ## Technologies used 
 * GitHub
 * Gitpod
 * Heroku
 
-## Typography and colour scheme
-
- 
 ## Testing
 
 
