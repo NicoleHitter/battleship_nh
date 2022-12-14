@@ -54,7 +54,7 @@ def display_board(board_size, missile_coordinates=None, ship_coordinates=None):
         print("\n")
         
    
-def get_missile_coordinates():
+def get_missile_coordinates(board_size):
     """
     Request user to give two numbers
     that will be the player's guessed coordinates  
@@ -64,28 +64,21 @@ def get_missile_coordinates():
     """
     print(f"Please select the position of your missile whithin the board by first choosing the row where this will land.\nNumbers need to be integers and within 1-{board_size} interval.")
     while True:
-        try:
-            missile_row = int(input())
-            
-        except ValueError:
-            print("Not a number! Please try again!")
+        missile_row = input()
+        if (missile_row.isnumeric() and 1 <= int(missile_row) < board_size and 1<= int(missile_row) < board_size):
+            missile_row = int(missile_row)
+            break
         else:
-            if 1 <= missile_row < board_size and 1<= missile_row < board_size:
-                break
-            else:
-                print("Invalid number! Please try again.")
+            print("Invalid number! Please try again.")
+
     print(f"Please select the position of your missile whithin the board by first choosing the column where this will land.\nNumbers need to be integers and within 1-{board_size} interval.")
     while True:
-        try:
-            missile_column = int(input())
-            
-        except ValueError:
-            print("Not a number! Please try again!")
+        missile_column = input()
+        if (missile_column.isnumeric() and 1 <= int(missile_column) < board_size and 1<= int(missile_column) < board_size):
+            missile_column = int(missile_column)
+            break
         else:
-            if (1 <= missile_column < board_size and 1 <= missile_column < board_size):
-                break
-            else:
-                print("Invalid number! Please try again.")            
+            print("Invalid number! Please try again.")         
   
     return (missile_row, missile_column)
 
@@ -131,5 +124,5 @@ def play_game():
 
 
 
-board_size = get_board_size()
-print(board_size)
+missile_coordinates = get_missile_coordinates(5)
+print(missile_coordinates)
