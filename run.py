@@ -19,19 +19,20 @@ def display_instructions():
 def get_board_size():
     """
     Request user to select a number 
-    that will give the number of rows and columns 
-    for the board 
+    that will give the size of the board
     """
+    print("Please enter a number between 4 and 9.")
+
     while True:
-        try:
-            board_size = int(input("Please enter a number between 4 and 9.\n"))
-        except ValueError:
-            print("Not a number! Please try again!\n")
+        board_size = input()
+        if (board_size.isnumeric()) and (4 <= int(board_size) < 10):
+            board_size = int(board_size)
+            break
+        
         else:
-            if 4 <= board_size < 10:
-                break
-            else:
-                print("Invalid number! Please try again.\n")
+            print("Invalid number! Please try again.")
+            
+        
     return board_size
 
 
@@ -130,4 +131,5 @@ def play_game():
 
 
 
-play_game()
+board_size = get_board_size()
+print(board_size)
