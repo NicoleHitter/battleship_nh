@@ -1,5 +1,7 @@
+"""
+Defines a series of functions for generating or manipulating random integers
+"""
 import random
-from random import randint
 
 
 def display_instructions():
@@ -30,8 +32,7 @@ def get_board_size():
         if (board_size.isnumeric()) and (4 <= int(board_size) < 10):
             board_size = int(board_size)
             break
-        else:
-            print("Invalid number! Please try again.")
+        print("Invalid number! Please try again.")
 
     return board_size
 
@@ -65,6 +66,22 @@ def get_random_ship(board_size):
     return (ship_row, ship_column)
 
 
+def get_cell_value(board_size):
+    """
+    This functions asks user for an input,
+    then checks if this is a number,
+    and within the interval given,
+    then returns it.
+    """
+    while True:
+        cell_location = input()
+        if (cell_location.isnumeric() and
+            0 <= int(cell_location) < board_size and
+            0 <= int(cell_location) < board_size):
+            return int(cell_location)
+        print("Invalid number! Please try again.")
+
+
 def get_missile_coordinates(board_size):
     """
     This function takes the board_size,
@@ -72,23 +89,14 @@ def get_missile_coordinates(board_size):
     values that need to be a number between 0 and board_size.
     """
 
-    print(f"Please select the position of your missile whithin the board, by first choosing the row where this will land.\nNumbers need to be integers and within 0-{board_size-1} interval.")
-    while True:
-        missile_row = input()
-        if (missile_row.isnumeric() and 0 <= int(missile_row) < board_size and 0 <= int(missile_row) < board_size):
-            missile_row = int(missile_row)
-            break
-        else:
-            print("Invalid number! Please try again.")
+    print("Please select the position of your missile whithin the board,")
+    print("by first choosing the row where this will land.")
+    print(f"Numbers need to be integers and within 0-{board_size-1} interval.")
+    missile_row = get_cell_value(board_size)
 
-    print(f"Please select the position of your missile whithin the board by now choosing the column where this will land.\nNumbers need to be integers and within 1-{board_size-1} interval.")
-    while True:
-        missile_column = input()
-        if (missile_column.isnumeric() and 0 <= int(missile_column) < board_size and 0 <= int(missile_column) < board_size):
-            missile_column = int(missile_column)
-            break
-        else:
-            print("Invalid number! Please try again.")
+    print("Now chose the column where this will land.")
+    print(f"Numbers need to be integers and within 0-{board_size-1} interval.")
+    missile_column = get_cell_value(board_size)
     return (missile_row, missile_column)
 
 
@@ -100,9 +108,11 @@ def check_sinking(missile_coordinates, ship_coordinates):
     accordingly
     """
     if missile_coordinates == ship_coordinates:
-        print(f"Ship has been sinked!You won this battle!You have thrown missile at:{missile_coordinates} exactly were ship was located")
+        print("Ship has been sinked!You won this battle!")
+        print(f"You have thrown missile at:{missile_coordinates} exactly were ship was located")
     else:
-        print(f"You missed the ship!Missile was thrown at:{missile_coordinates} and ship was at:{ship_coordinates}")
+        print("You missed the ship!")
+        print(f"Missile was thrown at:{missile_coordinates} and ship was at:{ship_coordinates}")
 
 
 def play_game():
@@ -112,11 +122,11 @@ def play_game():
     """
     display_instructions()
     board_size = get_board_size()
-    board = display_board(board_size)
+    display_board(board_size)
     ship_coordinates = get_random_ship(board_size)
     missile_coordinates = get_missile_coordinates(board_size)
     check_sinking(missile_coordinates, ship_coordinates)
-    board = display_board(board_size, missile_coordinates, ship_coordinates)
+    display_board(board_size, missile_coordinates, ship_coordinates)
 
 
 if __name__ == "__main__":
