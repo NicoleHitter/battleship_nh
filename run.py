@@ -11,11 +11,11 @@ def display_instructions():
     This function is going to display:
     the welcome message and instructions for the player.
     """
-    termcolor.cprint("Welcome to Battleship-NH!", "blue")
+    termcolor.cprint("    Welcome to Battleship-NH!", "blue")
     termcolor.cprint("First you will be asked to introduce a number,", "green")
     termcolor.cprint("that will be the size of the board,", "green")
     termcolor.cprint("and then the row and column"
-                     + " where you will throw the missile,", "green")
+                     + "where you will throw the missile,", "green")
     termcolor.cprint("couting for these starts with 0.", "green")
     termcolor.cprint("Once this is done, you will be displayed a message",
                      "green")
@@ -34,7 +34,7 @@ def get_board_size():
         Which is the user's input
     """
     termcolor.cprint("Please choose the board size"
-                     + " by entering a number between 4 and 9.", "yellow")
+                     + "by entering a number between 4 and 9.", "yellow")
 
     while True:
         board_size = input()
@@ -142,7 +142,7 @@ def check_sinking(missile_coordinates, ship_coordinates):
     else:
         termcolor.cprint("You missed the ship!", "red")
         print(f"Missile was thrown at:{missile_coordinates}"
-              + f" and ship was at:{ship_coordinates}")
+              + f"and ship was at:{ship_coordinates}")
 
 
 def play_game():
