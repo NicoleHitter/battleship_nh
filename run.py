@@ -3,19 +3,24 @@ Defines a series of functions for generating or manipulating random integers
 """
 import random
 
+import termcolor
+
 
 def display_instructions():
     """
     This function is going to display:
     the welcome message and instructions for the player.
     """
-    print("Welcome to Battleship-NH!\n")
-    print("First you will be asked to introduce a number,")
-    print("that will be the size of the board,")
-    print("and then the row and column where you will throw the missile,")
-    print("couting for these starts with 0.")
-    print("Once this is done, you will be displayed a message")
-    print("to confirm or not if you managed to hit the ship.")
+    termcolor.cprint("Welcome to Battleship-NH!", "blue")
+    termcolor.cprint("First you will be asked to introduce a number,", "green")
+    termcolor.cprint("that will be the size of the board,", "green")
+    termcolor.cprint("and then the row and column"
+                     + " where you will throw the missile,", "green")
+    termcolor.cprint("couting for these starts with 0.", "green")
+    termcolor.cprint("Once this is done, you will be displayed a message",
+                     "green")
+    termcolor.cprint("to confirm or not if you managed to hit the ship.",
+                     "green")
 
 
 def get_board_size():
@@ -25,7 +30,8 @@ def get_board_size():
     and within the board size,
     if so this will be transformed into integer and returned.
     """
-    print("Please choose the board size by entering a number between 4 and 9.")
+    termcolor.cprint("Please choose the board size"
+                     + " by entering a number between 4 and 9.", "yellow")
 
     while True:
         board_size = input()
@@ -48,9 +54,9 @@ def display_board(board_size, missile_coordinates=None, ship_coordinates=None):
         for column in range(board_size):
             board_coordinates = (row, column)
             if board_coordinates == missile_coordinates:
-                print("M ", end=' ')
+                termcolor.cprint("M ", "red", end=' ')
             elif board_coordinates == ship_coordinates:
-                print("S ", end=' ')
+                termcolor.cprint("S ", "blue", end=' ')
             else:
                 print(". ", end=' ')
         print("\n")
@@ -108,11 +114,12 @@ def check_sinking(missile_coordinates, ship_coordinates):
     accordingly
     """
     if missile_coordinates == ship_coordinates:
-        print("Ship has been sinked!You won this battle!")
-        print(f"You have thrown missile at:{missile_coordinates} exactly were ship was located")
+        termcolor.cprint("Ship has been sinked!You won this battle!", "green")
+        print(f"Missile was thrown at:{missile_coordinates} exactly were ship was located")
     else:
-        print("You missed the ship!")
-        print(f"Missile was thrown at:{missile_coordinates} and ship was at:{ship_coordinates}")
+        termcolor.cprint("You missed the ship!", "red")
+        print(f"Missile was thrown at:{missile_coordinates}"
+              + f" and ship was at:{ship_coordinates}")
 
 
 def play_game():
