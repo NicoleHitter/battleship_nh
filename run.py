@@ -112,7 +112,6 @@ def play_game():
     """
     display_instructions()
     board_size = get_board_size()
-    print(board_size)
     board = display_board(board_size)
     ship_coordinates = get_random_ship(board_size)
     missile_coordinates = get_missile_coordinates(board_size)
