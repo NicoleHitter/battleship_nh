@@ -131,4 +131,5 @@ def play_game():
     board = display_board(board_size, missile_coordinates, ship_coordinates)
 
 
-play_game()
+if __name__ == "__main__":
+    play_game()
