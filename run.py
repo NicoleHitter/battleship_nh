@@ -139,11 +139,11 @@ def check_sinking(missile_coordinates, ship_coordinates):
     if missile_coordinates == ship_coordinates:
         termcolor.cprint("Ship has been sinked!You won this battle!", "green")
         print(f"Missile was thrown at:{missile_coordinates}"
-              + f"exactly were ship was located")
+              + "exactly were ship was located")
     else:
         termcolor.cprint("You missed the ship!", "red")
         print(f"Missile was thrown at:{missile_coordinates}"
-              + f"and ship was at:{ship_coordinates}")
+              + "and ship was at:{ship_coordinates}")
 
 
 def play_game():
