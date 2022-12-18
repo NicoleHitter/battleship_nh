@@ -111,7 +111,8 @@ Diagram has been created using:
 
 Python code has been written with inspiration from:
 * [Code Institute](https://codeinstitute.net/)
-As using the idea provided in Portofolio Project 3 Scope. 
+
+As I have been using the idea provided in Portofolio Project 3 Scope. 
 
 And with extra support from:
 * [Code Institute](https://codeinstitute.net/)
