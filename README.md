@@ -102,7 +102,8 @@ The project is deployed on Heroku. The steps are as follow:
 
 
 ### Gitpod
-After opening the repository in GitHub, you can press on Gitpod button which will take you to Gitpod. In Gitpod app is run by pressing `python3 run.py`.
+After opening the repository in GitHub, you can press on Gitpod button which will take you to Gitpod. 
+In Gitpod first termcolor needs to be installed by typing `python3 -m pip install termcolor`, then app is run by pressing `python3 run.py` command on terminal.
 
 ## Media Credits 
 
