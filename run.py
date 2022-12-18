@@ -98,8 +98,8 @@ def get_cell_value(board_size):
     while True:
         cell_location = input()
         if (cell_location.isnumeric() and
-            0 <= int(cell_location) < board_size and
-            0 <= int(cell_location) < board_size):
+           0 <= int(cell_location) < board_size and
+           0 <= int(cell_location) < board_size):
             return int(cell_location)
         print("Invalid number! Please try again.")
 
@@ -138,7 +138,8 @@ def check_sinking(missile_coordinates, ship_coordinates):
     """
     if missile_coordinates == ship_coordinates:
         termcolor.cprint("Ship has been sinked!You won this battle!", "green")
-        print(f"Missile was thrown at:{missile_coordinates} exactly were ship was located")
+        print(f"Missile was thrown at:{missile_coordinates}"
+              + f"exactly were ship was located")
     else:
         termcolor.cprint("You missed the ship!", "red")
         print(f"Missile was thrown at:{missile_coordinates}"
