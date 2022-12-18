@@ -87,8 +87,8 @@ I have used the pycodestyle library to help me find and solve the errors in my c
 ### Heroku
 The project is deployed on Heroku. The steps are as follow:
 
-1. In your project: Create requirements.txt file with
- pip3 freeze > requirements.txt
+1. In your project: Create `requirements.txt` file with
+ `pip3 freeze` > `requirements.txt`
 2. Create Heroku account.
 3. Create new project. 
 4. Pick Github and find the repo with the project you want to deploy.
